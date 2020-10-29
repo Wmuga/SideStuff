@@ -1,0 +1,13 @@
+D:\Documents\GitHub\Side stuff\Complex\Complex\bin\Debug\netcoreapp3.1\Complex.exe
+D:\Documents\GitHub\Side stuff\Complex\Complex\bin\Debug\netcoreapp3.1\Complex.deps.json
+D:\Documents\GitHub\Side stuff\Complex\Complex\bin\Debug\netcoreapp3.1\Complex.runtimeconfig.json
+D:\Documents\GitHub\Side stuff\Complex\Complex\bin\Debug\netcoreapp3.1\Complex.runtimeconfig.dev.json
+D:\Documents\GitHub\Side stuff\Complex\Complex\bin\Debug\netcoreapp3.1\Complex.dll
+D:\Documents\GitHub\Side stuff\Complex\Complex\bin\Debug\netcoreapp3.1\Complex.pdb
+D:\Documents\GitHub\Side stuff\Complex\Complex\obj\Debug\netcoreapp3.1\Complex.csprojAssemblyReference.cache
+D:\Documents\GitHub\Side stuff\Complex\Complex\obj\Debug\netcoreapp3.1\Complex.AssemblyInfoInputs.cache
+D:\Documents\GitHub\Side stuff\Complex\Complex\obj\Debug\netcoreapp3.1\Complex.AssemblyInfo.cs
+D:\Documents\GitHub\Side stuff\Complex\Complex\obj\Debug\netcoreapp3.1\Complex.csproj.CoreCompileInputs.cache
+D:\Documents\GitHub\Side stuff\Complex\Complex\obj\Debug\netcoreapp3.1\Complex.dll
+D:\Documents\GitHub\Side stuff\Complex\Complex\obj\Debug\netcoreapp3.1\Complex.pdb
+D:\Documents\GitHub\Side stuff\Complex\Complex\obj\Debug\netcoreapp3.1\Complex.genruntimeconfig.cache
