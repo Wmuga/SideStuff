@@ -3,4 +3,4 @@ project(aeed)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(aeed main.cpp ae_coder.cpp ae_coder.h)
+add_executable(aeed main.cpp ae_coder.cpp ae_coder1.cpp ae_coder.h BitStream.h BitStream.cpp)

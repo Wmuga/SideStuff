@@ -104,3 +104,109 @@ std::ostream& operator<<(std::ostream& os,const ustring& str){
     for (const unsigned char& item : str) os << item;
     return os;
 }
+
+void rle::encode(std::string& filename) {
+    std::string block;
+    try {
+        std::ifstream in(filename);
+        std::ofstream out(filename + ".rle");
+        if (!in.is_open()) throw std::invalid_argument("Cant open file");
+        while ((block = get_block(in)) != "nll")
+        {
+            std::clog << block << std::endl;
+            out << block;
+        }
+        in.close();
+        out.close();
+    } catch (std::exception& er) {
+        std::cerr<<er.what();
+    }
+}
+
+std::string rle::get_block(std::ifstream& in) {
+    std::string out = "nll";
+    int count = 1;
+    unsigned char symb = in.get();
+    if (!in.fail()) {
+        while (true) {
+            unsigned char buffer = in.get();
+            if (buffer == symb) count++;
+            else {
+                in.unget();
+                break;
+            }
+        }
+        out = static_cast<char>(count);
+        out += static_cast<char>(symb);
+    }
+    return out;
+}
+
+void rle::decode(std::string& filename) {
+    try {
+        std::ifstream in(filename);
+        std::ofstream out(filename.substr(0,filename.size()-3));
+        if (!in.is_open()) throw std::invalid_argument("Cant open file");
+        while (!in.eof())
+        {
+            int count = in.get();
+            if (count==-1) break;
+            char symb = in.get();
+            std::string sout;
+            for (int i=0;i<count;i++) sout+=symb;
+            out<<sout;
+        }
+        in.close();
+        out.close();
+    } catch (std::exception& er) {
+        std::cerr<<er.what();
+    }
+}
+/*
+void rle::encode4(std::string& filename) {
+    unsigned char block;
+    try {
+        bitReadStream brs(filename);
+        bitWriteStream bws(filename + ".rle");
+        if (!brs.Is_open()) throw std::invalid_argument("Cant open file");
+        while ((block = get_block4(brs)) != 0x0) {
+            bws.WriteBits(static_cast<unsigned int>(block), 8);
+            printf("%x\n",block);
+        }
+        brs.Close();
+        bws.Close();
+    } catch (std::exception& er) {
+        std::cerr<<er.what();
+    }
+}
+
+void rle::decode4(std::string& filename) {
+    try {
+        bitReadStream in(filename);
+        bitWriteStream out(filename.substr(0,filename.size()-3));
+        if (!in.Is_open()) throw std::invalid_argument("Cant open file");
+        while (!in.Eof())
+        {
+            unsigned char count = in.ReadBits(4);
+            unsigned char symb = in.ReadBits(4);
+            for (char i=0;i<count;i++) out.WriteBits(symb,4);
+        }
+        in.Close();
+        out.Close();
+    } catch (std::exception& er) {
+        std::cerr<<er.what();
+    }
+}
+
+unsigned char rle::get_block4(bitReadStream& in) {
+    unsigned char out = 0x0;
+    unsigned char count = 1;
+    unsigned char symb = in.ReadBits(4);
+        while(in.ReadBits(4)==symb && count!=15) count++;
+        if (!in.Eof()) {
+            in.Seek(-4, SEEK_CUR);
+            out = (count << 4u) + symb;
+        }
+    return out;
+}
+*/

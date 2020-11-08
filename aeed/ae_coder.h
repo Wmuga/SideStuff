@@ -7,11 +7,9 @@
 #include <set>
 #include <map>
 #include <fstream>
+#include "BitStream.h"
 
 typedef std::basic_string<unsigned char> ustring;
-
-std::ostream& operator<<(std::ostream&,const ustring&);
-
 
 class ae_encoder {
     std::map<unsigned char,short> dictionary;
@@ -43,5 +41,16 @@ namespace converter{
 
     ustring raw_convert(const ustring&,const short&,const short&);
 }
+
+class rle{
+public:
+    static void encode(std::string&);
+    static void decode(std::string&);
+    static void encode4(std::string&);
+    static void decode4(std::string&);
+private:
+    static std::string get_block(std::ifstream&);
+    static unsigned char get_block4(bitReadStream&);
+};
 
 #endif //AEED_AE_CODER_H
